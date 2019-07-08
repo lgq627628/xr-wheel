@@ -1,8 +1,6 @@
 <template>
     <button class="xr-button" :class="[iconPos === 'right' ? 'icon-right' : '']">
-        <svg v-if="icon" class="icon" aria-hidden="true">
-            <use :xlink:href="`#icon-${icon}`"></use>
-        </svg>
+        <xr-icon v-if="icon" class="icon" :name="icon"></xr-icon>
         <!-- 因为slot不能加class，加了也会不见 -->
         <div class="content">
             <slot></slot>
@@ -51,8 +49,6 @@ export default {
     }
     .icon {
         order: 1;
-        width: 1em;
-        height: 1em;
         margin-right: .2em;
     }
     .content {
