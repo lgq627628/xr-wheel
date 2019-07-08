@@ -1,13 +1,39 @@
 <template>
-    <button class="xr-button">点我</button>
+    <button class="xr-button" :class="[iconPos === 'right' ? 'icon-right' : '']">
+        <svg v-if="icon" class="icon" aria-hidden="true">
+            <use :xlink:href="`#icon-${icon}`"></use>
+        </svg>
+        <!-- 因为slot不能加class，加了也会不见 -->
+        <div class="content">
+            <slot></slot>
+        </div>
+    </button>
 </template>
 <script>
 export default {
-    name: 'XrButton'
+    name: 'XrButton',
+    props: {
+        icon: {
+            type: String,
+            default: ''
+        },
+        iconPos: {
+            type: String,
+            default: 'left',
+            validator(val) {
+                return val === 'left' || val === 'right'
+            }
+        }
+    }
 }
 </script>
 <style lang="scss">
 .xr-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    // 所有行内样式都会有这个问题 
+    vertical-align: middle;
     padding: 0 1em;
     height: var(--button-height);
     font-size: var(--font-size);
@@ -22,6 +48,25 @@ export default {
     }
     &:focus {
         outline: none;
+    }
+    .icon {
+        order: 1;
+        width: 1em;
+        height: 1em;
+        margin-right: .2em;
+    }
+    .content {
+        order: 2;
+    }
+    &.icon-right {
+        .icon {
+            order: 2;
+            margin-left: .2em;
+            margin-right: 0;
+        }
+        .content {
+            order: 1;
+        }
     }
 }
 </style>
