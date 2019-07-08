@@ -23,36 +23,12 @@
 			#app {
 				margin: 50px;
 			}
-			.xr-button {
-				padding: 0 1em;
-				height: var(--button-height);
-				font-size: var(--font-size);
-				border-radius: var(--border-radius);
-				border: 1px solid var(--border-color);
-				background: var(--button-bg);
-			}
-			.xr-button:hover {
-				border: 1px solid var(--border-color-hover);
-			}
-			.xr-button:active {
-				background: var(--button-bg-active);
-			}
-			.xr-button:focus {
-				outline: none;
-			}
 		</style>
 </head>
 <body>
 	<div id="app">
 		<xr-button></xr-button>
 	</div>
-
-	<script src="./node_modules/vue/dist/vue.min.js"></script>
-	<script src="./button.js"></script>
-	<script>
-		new Vue({
-			el: '#app'
-		})
-	</script>
+	<script src="./src/app.js"></script>
 </body>
 </html>
