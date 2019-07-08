@@ -1,6 +1,7 @@
 <template>
     <button class="xr-button" :class="[iconPos === 'right' ? 'icon-right' : '']">
-        <xr-icon v-if="icon" class="icon" :name="icon"></xr-icon>
+        <xr-icon v-if="icon && icon === 'loading'" class="icon" name="loading"></xr-icon>
+        <xr-icon v-else-if="icon" class="icon" :name="icon"></xr-icon>
         <!-- 因为slot不能加class，加了也会不见 -->
         <div class="content">
             <slot></slot>
