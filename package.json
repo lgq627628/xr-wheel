@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/lgq627628/xr-wheel/issues"
   },
-  "homepage": "https://github.com/lgq627628/xr-wheel#readme"
+  "homepage": "https://github.com/lgq627628/xr-wheel#readme",
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
 }
