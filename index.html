@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			:root { 
+				--button-height: 32px;
+				--font-size: 14px;
+				--button-bg: #fff;
+				--button-bg-active: #eee;
+				--border-radius: 4px;
+				--border-color: #999;
+				--border-color-hover: #666;
+			}
+			#app {
+				margin: 50px;
+			}
+			.xr-button {
+				padding: 0 1em;
+				height: var(--button-height);
+				font-size: var(--font-size);
+				border-radius: var(--border-radius);
+				border: 1px solid var(--border-color);
+				background: var(--button-bg);
+			}
+			.xr-button:hover {
+				border: 1px solid var(--border-color-hover);
+			}
+			.xr-button:active {
+				background: var(--button-bg-active);
+			}
+			.xr-button:focus {
+				outline: none;
+			}
+		</style>
+</head>
+<body>
+	<div id="app">
+		<xr-button></xr-button>
+	</div>
+
+	<script src="./node_modules/vue/dist/vue.min.js"></script>
+	<script src="./button.js"></script>
+	<script>
+		new Vue({
+			el: '#app'
+		})
+	</script>
+</body>
+</html>
