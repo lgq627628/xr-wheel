@@ -1,10 +1,10 @@
 <template>
-    <button class="xr-button" :class="[iconPos === 'right' ? 'icon-right' : '']">
-        <xr-icon v-if="icon && icon === 'loading'" class="icon" name="loading"></xr-icon>
-        <xr-icon v-else-if="icon" class="icon" :name="icon"></xr-icon>
+    <button class="xr-button" :class="[iconPos === 'right' ? 'icon-right' : '']" @click="$emit('click')">
+        <xr-icon v-if="loading" class="icon" name="loading"></xr-icon>
+        <xr-icon v-if="icon && !loading" class="icon" :name="icon"></xr-icon>
         <!-- 因为slot不能加class，加了也会不见 -->
         <div class="content">
-            <slot></slot>
+            <slot></slot> 
         </div>
     </button>
 </template>
@@ -22,6 +22,10 @@ export default {
             validator(val) {
                 return val === 'left' || val === 'right'
             }
+        },
+        loading: {
+            type: Boolean,
+            default: false
         }
     }
 }

@@ -6,5 +6,8 @@ Vue.component('xr-button', Button);
 Vue.component('xr-icon', Icon);
 
 new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        showBtn: false
+    }
 })
