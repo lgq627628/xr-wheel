@@ -1,11 +1,20 @@
 <template>
     <div class="xr-button-group">
-        <slot></slot>
+        <slot></slot> 
     </div>
 </template>
 <script>
 export default {
     name: 'XrButtonGroup',
+    mounted() {
+        // console.log(this.$children); 这个只会打印vue示例，所以不能用它来判断用户输入的slot
+        for (let node of this.$el.children) {
+            let name = node.nodeName.toLowerCase();
+            if (name !== 'button') {
+                console.warn(`xr-button-group 组件下应全部为 xr-button，但你写的是 ${name}`);
+            }
+        };
+    }
 }
 </script>
 <style lang="scss">
