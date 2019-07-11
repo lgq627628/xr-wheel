@@ -9,8 +9,12 @@
     </button>
 </template>
 <script>
+import XrIcon from './icon';
 export default {
     name: 'XrButton',
+    components: {
+        XrIcon
+    },
     props: {
         icon: {
             type: String,
