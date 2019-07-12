@@ -2,11 +2,12 @@
   "name": "xr-wheel",
   "version": "0.0.1",
   "description": "轮子工厂",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "parcel index.html --no-cache",
     "dev-test": "parcel watch test/* --no-cache & karma start",
-    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run"
+    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
+    "build": "parcel build index.js --no-cache --no-minify"
   },
   "repository": {
     "type": "git",
