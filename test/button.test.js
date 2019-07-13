@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import chai from 'chai'
 import sinon from 'sinon'
+import sinonChai from "sinon-chai"
 import Button from '../src/button'
 const expect = chai.expect;
+chai.use(sinonChai)
 
 Vue.config.productionTip = false
 Vue.config.devtools = false

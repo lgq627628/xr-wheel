@@ -4,10 +4,12 @@ import spies from 'chai-spies'
 import Button from './button';
 import ButtonGroup from './button-group';
 import Icon from './icon';
+import Input from './input';
 
 Vue.component('xr-button', Button);
 Vue.component('xr-button-group', ButtonGroup);
 Vue.component('xr-icon', Icon);
+Vue.component('xr-input', Input);
 
 chai.use(spies);
 
@@ -15,7 +17,12 @@ new Vue({
     el: '#app',
     data: {
         showBtn: false
-    }
+    },
+    methods: {
+        changeInput(e) {
+            console.log('input的值变啦', e);
+        }
+    },
 })
 
 // 单元测试（传一个输入得到一个输出，测试参数和事件）
