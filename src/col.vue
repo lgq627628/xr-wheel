@@ -37,10 +37,6 @@ export default {
         pc: {
             type: Object,
             validator
-        },
-        widePc: {
-            type: Object,
-            validator
         }
     },
     data() {
@@ -68,18 +64,13 @@ export default {
                 pc.span ? `xr-col-${pc.span}--pc` : '',
                 pc.offset ? `xr-col-offset-${pc.offset}--pc` : ''
             ] || []
-            let widePcClass = widePc && [
-                widePc.span ? `xr-col-${widePc.span}--widePc` : '',
-                widePc.offset ? `xr-col-offset-${widePc.offset}--widePc` : ''
-            ] || []
             return [
                 offset ? `xr-col-offset-${offset}` : '',
                 span ? `xr-col-${span}` : 'xr-col-auto',
                 ...phoneClass,
                 ...ipadClass,
                 ...narrowPcClass,
-                ...pcClass,
-                ...widePcClass
+                ...pcClass
             ]
         },
         colStyle() {
@@ -152,18 +143,6 @@ export default {
         }
         @for $n from 1 through 24 {
             &.xr-col-offset-#{$n}--pc {
-                margin-left: ($n / 24) * 100%;
-            }
-        }
-    }
-    @media (min-width: 1201px) {
-        @for $n from 1 through 24 {
-        &.xr-col-#{$n}--widePc {
-            width: ($n / 24) * 100%;
-        }
-        }
-        @for $n from 1 through 24 {
-            &.xr-col-offset-#{$n}--widePc {
                 margin-left: ($n / 24) * 100%;
             }
         }
