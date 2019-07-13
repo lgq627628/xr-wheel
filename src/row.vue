@@ -1,5 +1,5 @@
 <template>
-    <div class="xr-row" :style="{marginLeft: -gutter/2 + 'px', marginRight: -gutter/2 + 'px'}">
+    <div class="xr-row" :style="rowObj">
         <slot></slot>
     </div>
 </template>
@@ -8,6 +8,14 @@ export default {
     name: 'XrRow',
     props: {
         gutter: [String, Number]
+    },
+    computed: {
+        rowObj() {
+            return {
+                marginLeft: -this.gutter/2 + 'px',
+                marginRight: -this.gutter/2 + 'px'
+            }
+        }
     },
     mounted() {
         this.$children.forEach(vm => {
