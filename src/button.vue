@@ -34,7 +34,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .xr-button {
     display: inline-flex;
     align-items: center;
