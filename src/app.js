@@ -5,11 +5,15 @@ import Button from './button';
 import ButtonGroup from './button-group';
 import Icon from './icon';
 import Input from './input';
+import Col from './col';
+import Row from './row';
 
 Vue.component('xr-button', Button);
 Vue.component('xr-button-group', ButtonGroup);
 Vue.component('xr-icon', Icon);
 Vue.component('xr-input', Input);
+Vue.component('xr-col', Col);
+Vue.component('xr-row', Row);
 
 chai.use(spies);
 
