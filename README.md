@@ -4,12 +4,36 @@
 
 ## 介绍
 
+造轮子练习。
+
 ## 开始使用
 
-```
-* { border-sizing: border-box;}
-```
+第一步：加入 css
+    ```
+    *， *::before, *::after { border-sizing: border-box;}
+    :root { 
+        --button-height: 32px;
+        --font-size: 14px;
+        --button-bg: #fff;
+        --button-bg-active: #eee;
+        --border-radius: 4px;
+        --border-color: #999;
+        --border-color-hover: #666;
+    }
+    ```
 
+第二步：安装 xr-wheel
+    `npm i xr-wheel -S`
+
+第三步：引入 xr-wheel
+    ```
+    import { Button, ButtonGroup, Icon } from 'xr-wheel'
+    import 'xr-wheel/dist/index.css'
+    Vue.component('xr-button', Button);
+    Vue.component('xr-button-group', ButtonGroup);
+    Vue.component('xr-icon', Icon);
+    ```
+    
 ## 文档
 
 ## 提问
