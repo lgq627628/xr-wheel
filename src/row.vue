@@ -1,5 +1,5 @@
 <template>
-    <div class="xr-row" :style="rowObj">
+    <div class="xr-row" :style="rowStyle" :class="rowClass">
         <slot></slot>
     </div>
 </template>
@@ -7,14 +7,25 @@
 export default {
     name: 'XrRow',
     props: {
-        gutter: [String, Number]
+        gutter: [String, Number],
+        align: {
+            type: String,
+            validator(val) {
+                return ['left', 'right', 'center'].includes(val)
+            }
+        }
     },
     computed: {
-        rowObj() {
+        rowStyle() {
             return {
                 marginLeft: -this.gutter/2 + 'px',
                 marginRight: -this.gutter/2 + 'px'
             }
+        },
+        rowClass() {
+            return [
+                this.align ? `xr-row--${this.align}` : ''
+            ]
         }
     },
     mounted() {
@@ -27,5 +38,14 @@ export default {
 <style lang="scss" scoped>
 .xr-row {
     display: flex;
+    &--left {
+        justify-content: flex-start;
+    }
+    &--right {
+        justify-content: flex-end;
+    }
+    &--center {
+        justify-content: center;
+    }
 }
 </style>
