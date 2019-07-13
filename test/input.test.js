@@ -79,9 +79,10 @@ describe('Input', () => {
           // 如何触发 change
           vm.$on(eventName, cb)
           let event = new Event(eventName)
+          Object.defineProperty(event, 'target', {value: {value: 'hh'}, enumerable: true})
           let ele = vm.$el.querySelector('input')
           ele.dispatchEvent(event)
-          expect(cb).to.have.been.calledWith(event)
+          expect(cb).to.have.been.calledWith('hh')
         })
       })
   })

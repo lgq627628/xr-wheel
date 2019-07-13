@@ -6,10 +6,10 @@
             :value="value"
             :disabled="disabled"
             :readonly="readonly"
-            @change="$emit('change', $event)"
-            @input="$emit('input', $event)"
-            @focus="$emit('focus', $event)"
-            @blur="$emit('blur', $event)">
+            @change="$emit('change', $event.target.value)"
+            @input="$emit('input', $event.target.value)"
+            @focus="$emit('focus', $event.target.value)"
+            @blur="$emit('blur', $event.target.value)">
         <template v-if="error">
             <xr-icon name="error" class="xr-input__erricon"></xr-icon>
             <span class="xr-input__errmsg">{{error}}</span> 

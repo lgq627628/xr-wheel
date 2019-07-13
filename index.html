@@ -44,7 +44,9 @@
 		<xr-input value="哈哈"></xr-input>
 		<xr-input value="呵呵" disabled></xr-input>
 		<xr-input value="嘻嘻" error="wrong"></xr-input>
-		<xr-input value="嗯" @change="changeInput"></xr-input>
+		<xr-input value="嗯" @change="changeInput" v-model="msg"></xr-input>
+		<br>
+		<p @click="msg += 3">{{msg}}</p>
 	</div>
 	<script src="./src/app.js"></script>
 </body>
