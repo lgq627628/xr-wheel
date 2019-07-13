@@ -16,11 +16,13 @@ chai.use(spies);
 new Vue({
     el: '#app',
     data: {
-        showBtn: false
+        showBtn: false,
+        msg: '哈哈哈'
     },
     methods: {
         changeInput(e) {
             console.log('input的值变啦', e);
+            this.msg = e;
         }
     },
 })
