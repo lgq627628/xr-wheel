@@ -24,6 +24,8 @@
 				margin: 50px;
 			}
 			.line {
+				height: 1px;
+				background: #000;
 				margin: 10px auto;
 			}
 		</style>
@@ -45,8 +47,23 @@
 		<xr-input value="呵呵" disabled></xr-input>
 		<xr-input value="嘻嘻" error="wrong"></xr-input>
 		<xr-input value="嗯" @change="changeInput" v-model="msg"></xr-input>
-		<br>
 		<p @click="msg += 3">{{msg}}</p>
+		<div class="line"></div>
+		<xr-row>
+			<xr-col>1</xr-col>
+		</xr-row>
+		<xr-row>
+			<xr-col>1</xr-col>
+			<xr-col>2</xr-col>
+			<xr-col>3</xr-col>
+		</xr-row>
+		<xr-row>
+			<xr-col :span="2">1</xr-col>
+			<xr-col :span="4">2</xr-col>
+			<xr-col :span="6">3</xr-col>
+			<xr-col :span="8">4</xr-col>
+			<xr-col :span="4">5</xr-col>
+		</xr-row>
 	</div>
 	<script src="./src/app.js"></script>
 </body>
