@@ -72,45 +72,17 @@ describe('Input', () => {
     afterEach(() => {
       vm.$destroy()
     })
-    it('支持 change 事件', () => {
-      vm = new Constructor({}).$mount()
-      const cb = sinon.fake()
-      // 如何触发 change
-      vm.$on('change', cb)
-      let event = new Event('change')
-      let ele = vm.$el.querySelector('input')
-      ele.dispatchEvent(event)
-      expect(cb).to.have.been.calledWith(event)
-    })
-    it('支持 input 事件', () => {
-      vm = new Constructor({}).$mount()
-      const cb = sinon.fake()
-      // 如何触发 input
-      vm.$on('input', cb)
-      let event = new Event('input')
-      let ele = vm.$el.querySelector('input')
-      ele.dispatchEvent(event)
-      expect(cb).to.have.been.calledWith(event)
-    })
-    it('支持 focus 事件', () => {
-      vm = new Constructor({}).$mount()
-      const cb = sinon.fake()
-      // 如何触发 change
-      vm.$on('focus', cb)
-      let event = new Event('focus')
-      let ele = vm.$el.querySelector('input')
-      ele.dispatchEvent(event)
-      expect(cb).to.have.been.calledWith(event)
-    })
-    it('支持 blur 事件', () => {
-      vm = new Constructor({}).$mount()
-      const cb = sinon.fake()
-      // 如何触发 change
-      vm.$on('blur', cb)
-      let event = new Event('blur')
-      let ele = vm.$el.querySelector('input')
-      ele.dispatchEvent(event)
-      expect(cb).to.have.been.calledWith(event)
-    })
+    it('支持 change/input/focus/blur 事件', () => {
+      ['change', 'input', 'focus', 'blur'].forEach(eventName => {
+          vm = new Constructor({}).$mount()
+          const cb = sinon.fake()
+          // 如何触发 change
+          vm.$on(eventName, cb)
+          let event = new Event(eventName)
+          let ele = vm.$el.querySelector('input')
+          ele.dispatchEvent(event)
+          expect(cb).to.have.been.calledWith(event)
+        })
+      })
   })
 })
