@@ -10,8 +10,8 @@
 
 第一步：加入 css
     ```
-    *， *::before, *::after { border-sizing: border-box;}
-    :root { 
+    *， *::before, *::after { box-sizing: border-box;}
+    :root {
         --button-height: 32px;
         --font-size: 14px;
         --button-bg: #fff;
@@ -37,7 +37,7 @@
 ## 文档
 
 ## 提问
-
+执行 npx parcel 时 node 会默认去执行 index.js 文件而我们需要的是找到 index.html
 ## 变更记录
 
 ## 联系方式
