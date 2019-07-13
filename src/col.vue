@@ -23,7 +23,7 @@ export default {
             let {span, offset} = this
             return [
                 offset ? `xr-col-offset-${offset}` : '',
-                span ? `xr-col-${span}` : ''
+                span ? `xr-col-${span}` : 'xr-col-auto'
             ]
         },
         colStyle() {
@@ -38,7 +38,10 @@ export default {
 <style lang="scss" scoped>
 .xr-col { // 这个可以做迷宫
     height: 100px;
-    width: 50%; // 给 50% 是因为 nowrap 和 shrink，多了会自动分配
+    // width: 50%; // 给 50% 是因为 nowrap 和 shrink，多了会自动分配
+    &-auto {
+        flex: 1;
+    }
     @for $n from 1 through 24 {
         &.xr-col-#{$n} {
             width: ($n / 24) * 100%;
