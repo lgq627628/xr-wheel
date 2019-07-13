@@ -38,6 +38,7 @@ export default {
 <style lang="scss" scoped>
 .xr-row {
     display: flex;
+    flex-wrap: wrap;
     &--left {
         justify-content: flex-start;
     }
