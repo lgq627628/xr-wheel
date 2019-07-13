@@ -1,5 +1,5 @@
 <template>
-    <div class="xr-row">
+    <div class="xr-row" :style="{marginLeft: -gutter/2 + 'px', marginRight: -gutter/2 + 'px'}">
         <slot></slot>
     </div>
 </template>
@@ -7,10 +7,12 @@
 export default {
     name: 'XrRow',
     props: {
-        gutter: {
-            type: Number,
-            default: 20
-        }
+        gutter: [String, Number]
+    },
+    mounted() {
+        this.$children.forEach(vm => {
+            vm.gutter = this.gutter;
+        })
     }
 }
 </script>
