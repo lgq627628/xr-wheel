@@ -51,9 +51,6 @@
 		<div class="line"></div>
 		<xr-row>
 			<xr-col>1</xr-col>
-		</xr-row>
-		<xr-row>
-			<xr-col>1</xr-col>
 			<xr-col>2</xr-col>
 			<xr-col>3</xr-col>
 		</xr-row>
@@ -62,17 +59,8 @@
 			<xr-col :span="20" offset="2">2</xr-col>
 		</xr-row>
 		<xr-row>
-			<xr-col :span="2">1</xr-col>
-			<xr-col :span="10" offset="2">2</xr-col>
-			<xr-col :span="5" offset="1">2</xr-col>
-			<xr-col :span="4">2</xr-col>
-		</xr-row>
-		<xr-row>
-			<xr-col :span="2">1</xr-col>
-			<xr-col :span="4">2</xr-col>
-			<xr-col :span="6">3</xr-col>
-			<xr-col :span="8">4</xr-col>
-			<xr-col :span="4">5</xr-col>
+			<xr-col :span="4" :phone="{span: 16}" :ipad="{span: 10}" :pc="{span: 4}">1</xr-col>
+			<xr-col :span="20" :phone="{span: 8}" :ipad="{span: 14}" :pc="{span: 20}">2</xr-col>
 		</xr-row>
 	</div>
 	<script src="./src/app.js"></script>
