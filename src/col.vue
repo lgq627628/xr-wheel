@@ -22,7 +22,10 @@ export default {
     props: {
         span: [Number, String],
         offset: [Number, String],
-        phone: { // 有 5 种规模尺寸，肯定是其中一种，所以取一种作为默认（偏 pc 的话就取 widePc为默认值）
+        // 有 5 种规模尺寸，肯定是其中一种，所以取一种作为默认（偏 pc 的话就取 widePc为默认值）
+        // 但如果我只传了两种，比如手机和pc，那ipad怎么办呢，采取往下靠拢的策略，需要调整media样式顺序
+        // mobile first 移动优先
+        phone: {
             type: Object,
             validator
         },
@@ -66,7 +69,7 @@ export default {
             ] || []
             return [
                 offset ? `xr-col-offset-${offset}` : '',
-                span ? `xr-col-${span}` : 'xr-col-auto',
+                span ? `xr-col-${span}` : '',
                 ...phoneClass,
                 ...ipadClass,
                 ...narrowPcClass,
@@ -86,9 +89,9 @@ export default {
 .xr-col { // 这个可以做迷宫
     height: 100px;
     // width: 50%; // 给 50% 是因为 nowrap 和 shrink，多了会自动分配
-    &-auto {
-        flex: 1;
-    }
+    // &-auto {
+    //     flex: 1;
+    // }
     @for $n from 1 through 24 {
         &.xr-col-#{$n} {
             width: ($n / 24) * 100%;
@@ -99,7 +102,7 @@ export default {
             margin-left: ($n / 24) * 100%;
         }
     }
-    @media (max-width: 576px) { // 把手机样式写在这里，当屏幕缩小时，会覆盖上面的样式
+    @media (min-width: 0) { // 把手机样式写在这里，当屏幕缩小时，会覆盖上面的样式
         @for $n from 1 through 24 {
         &.xr-col-#{$n}--phone {
             width: ($n / 24) * 100%;
@@ -111,7 +114,7 @@ export default {
             }
         }
     }
-    @media (min-width: 577px) and (max-width: 768px) {
+    @media (min-width: 577px) {
         @for $n from 1 through 24 {
         &.xr-col-#{$n}--ipad {
             width: ($n / 24) * 100%;
@@ -123,7 +126,7 @@ export default {
             }
         }
     }
-    @media (min-width: 769px) and (max-width: 992px) {
+    @media (min-width: 769px) {
         @for $n from 1 through 24 {
         &.xr-col-#{$n}--narrowPc {
             width: ($n / 24) * 100%;
@@ -135,7 +138,7 @@ export default {
             }
         }
     }
-    @media (min-width: 993px) and (max-width: 1200px) {
+    @media (min-width: 993px) {
         @for $n from 1 through 24 {
         &.xr-col-#{$n}--pc {
             width: ($n / 24) * 100%;
