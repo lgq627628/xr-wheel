@@ -7,6 +7,7 @@ import Icon from './icon';
 import Input from './input';
 import Col from './col';
 import Row from './row';
+import plugins from './plugin';
 
 Vue.component('xr-button', Button);
 Vue.component('xr-button-group', ButtonGroup);
@@ -14,6 +15,7 @@ Vue.component('xr-icon', Icon);
 Vue.component('xr-input', Input);
 Vue.component('xr-col', Col);
 Vue.component('xr-row', Row);
+Vue.use(plugins);
 
 chai.use(spies);
 
@@ -27,8 +29,11 @@ new Vue({
         changeInput(e) {
             console.log('input的值变啦', e);
             this.msg = e;
+        },
+        showToast() {
+            this.$toast('哈哈哈');
         }
-    },
+    }
 })
 
 // 单元测试（传一个输入得到一个输出，测试参数和事件）
