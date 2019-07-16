@@ -31,7 +31,16 @@ new Vue({
             this.msg = e;
         },
         showToast() {
-            this.$toast('哈哈哈');
+            this.$toast('<p>哈哈哈哈</p>', {
+                enableHtml: true,
+                closeBtn: {
+                    text: '我知道了',
+                    cb: (toast) => { // 这是不错的写法
+                        toast.log()
+                        console.log('我知道了')
+                    }
+                }
+            });
         }
     }
 })
