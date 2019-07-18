@@ -32,6 +32,7 @@ new Vue({
         },
         showToast() {
             this.$toast('<p>哈哈哈哈</p>', {
+                position: 'bottom',
                 enableHtml: true,
                 closeBtn: {
                     text: '我知道了',
