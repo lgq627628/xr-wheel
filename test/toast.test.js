@@ -73,7 +73,6 @@ describe('Toast', () => {
       })
       vm.$mount()
       let classList = vm.$el.classList
-      console.log(classList)
       expect(classList.contains('xr-toast--bottom')).to.equal(true)
     })
   })
