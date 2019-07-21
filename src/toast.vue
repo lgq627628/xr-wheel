@@ -10,10 +10,6 @@
 export default {
     name: 'XrToast',
     props: {
-        autoClose: {
-            type: Boolean,
-            default: true
-        },
         duration: {
             type: Number,
             default: 3
@@ -50,7 +46,7 @@ export default {
     },
     methods: {
         execAutoClose() {
-            if (this.autoClose) {
+            if (this.duration) {
                 setTimeout(() => {
                     this.close();
                 }, this.duration * 1000);
@@ -58,7 +54,7 @@ export default {
         },
         updateStyle() {
             this.$nextTick(() => {
-                this.$refs.line.style.height = this.$refs.toast.getBoundingClientRect().height + 'px'
+                if (this.$refs.line) this.$refs.line.style.height = this.$refs.toast.getBoundingClientRect().height + 'px'
             })
         },
         close() {
