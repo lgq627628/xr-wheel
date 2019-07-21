@@ -20,54 +20,33 @@
 				--border-color: #999;
 				--border-color-hover: #666;
 			}
-			#app {
+			/* #app {
 				margin: 50px;
-			}
+			} */
 			.line {
 				height: 1px;
 				background: #000;
 				margin: 20px auto;
 			}
+			.all {
+				height: 100vh;
+			}
+			.demo {
+				border: 1px solid red;
+				min-height: 100px;
+			}
 		</style>
 </head>
 <body>
 	<div id="app">
-		<xr-button @click="showToast">点我有浮层</xr-button>
-		<xr-button :loading="true" icon="setting" icon-pos="right">点我呀</xr-button>
-		<xr-button icon="setting" :loading="showBtn" @click="showBtn = !showBtn">点我呀</xr-button>
-		<xr-button icon="setting">点我呀</xr-button>
-		<xr-button icon="loading">点我呀</xr-button>
-		<xr-button>点我呀</xr-button>
-		<xr-button-group>
-			<xr-button icon="left">上一页</xr-button>
-			<xr-button >中间</xr-button>
-			<xr-button icon="right" icon-pos="right">下一页</xr-button>
-		</xr-button-group>
-		<div class="line"></div>
-		<xr-input value="哈哈"></xr-input>
-		<xr-input value="呵呵" disabled></xr-input>
-		<xr-input value="嘻嘻" error="wrong"></xr-input>
-		<xr-input value="嗯" @change="changeInput" v-model="msg"></xr-input>
-		<p @click="msg += 3">{{msg}}</p>
-		<div class="line"></div>
-		<xr-row>
-			<xr-col>1</xr-col>
-			<xr-col>2</xr-col>
-			<xr-col>3</xr-col>
-		</xr-row>
-		<xr-row>
-			<xr-col :span="2">1</xr-col>
-			<xr-col :span="20" offset="2">2</xr-col>
-		</xr-row>
-		<xr-row>
-			<xr-col :phone="{span: 16}" :ipad="{span: 10}" :span="4">1</xr-col>
-			<xr-col :phone="{span: 8}" :ipad="{span: 14}" :span="20" >2</xr-col>
-		</xr-row>
-		<xr-row>
-			<xr-col :phone="{span: 24}" :ipad="{span: 12}" :pc="{span: 8}">1</xr-col>
-			<xr-col :phone="{span: 24}" :ipad="{span: 12}" :pc="{span: 8}">1</xr-col>
-			<xr-col :phone="{span: 24}" :ipad="{span: 12}" :pc="{span: 8}">1</xr-col>
-		</xr-row>
+		<xr-layout class="all">
+			<xr-sider class="demo">000</xr-sider>
+			<xr-layout>
+				<xr-header class="demo">1111</xr-header>
+				<xr-main class="demo">222</xr-main>
+				<xr-footer class="demo">333</xr-footer>
+			</xr-layout>
+		</xr-layout>
 	</div>
 	<script src="./src/app.js"></script>
 </body>
