@@ -40,8 +40,10 @@
 执行 npx parcel 时 node 会默认去执行 index.js 文件而我们需要的是找到 index.html
 ## 变更记录
 
+## 注意
+"dev-test": "parcel watch test/* --no-cache & karma start"
+这个脚本一开始karma会运行两遍，因为开始的时候parcel还没打包完karma就已经开始工作，打完包后又会运行一次
+windows 不支持 dev-test 里面的 & 命令，自己手动执行两边即可
 ## 联系方式
 
 ## 贡献代码
-"dev-test": "parcel watch test/* --no-cache & karma start"
-这个脚本一开始karma会运行两遍，因为开始的时候parcel还没打包完karma就已经开始工作，打完包后又会运行 一次
