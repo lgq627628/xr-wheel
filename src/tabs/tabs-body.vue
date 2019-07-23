@@ -5,11 +5,10 @@
 </template>
 <script>
 export default {
-    name: 'XrTabsBody'
+    name: 'XrTabsBody',
+    inject: ['eventBus']
 }
 </script>
 <style lang="scss" scoped>
-.xr-tabs-body {
-   
-}
+.xr-tabs-body {}
 </style>
