@@ -10,6 +10,11 @@ import Header from './header';
 import Sider from './sider';
 import Main from './main';
 import Footer from './footer';
+import Tabs from './tabs/tabs';
+import TabsHead from './tabs/tabs-head';
+import TabsBody from './tabs/tabs-body';
+import TabsItem from './tabs/tabs-item';
+import TabsPane from './tabs/tabs-pane';
 import Col from './col';
 import Row from './row';
 import plugins from './plugin';
@@ -23,6 +28,11 @@ Vue.component('xr-header', Header);
 Vue.component('xr-sider', Sider);
 Vue.component('xr-main', Main);
 Vue.component('xr-footer', Footer);
+Vue.component('xr-tabs', Tabs);
+Vue.component('xr-tabs-head', TabsHead);
+Vue.component('xr-tabs-body', TabsBody);
+Vue.component('xr-tabs-item', TabsItem);
+Vue.component('xr-tabs-pane', TabsPane);
 Vue.component('xr-col', Col);
 Vue.component('xr-row', Row);
 Vue.use(plugins);
@@ -33,7 +43,8 @@ new Vue({
     el: '#app',
     data: {
         showBtn: false,
-        msg: '哈哈哈'
+        msg: '哈哈哈',
+        activateTab: 'two'
     },
     methods: {
         changeInput(e) {

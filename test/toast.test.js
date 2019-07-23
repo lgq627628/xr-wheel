@@ -49,8 +49,10 @@ describe('Toast', () => {
       let closeBtn = vm.$el.querySelector('.xr-toast__close')
       let text = closeBtn.textContent.trim()
       expect(text).to.eq('关闭')
-      closeBtn.click()
-      expect(cb).to.have.been.called
+      setTimeout(() => {
+        closeBtn.click() // 注意这个 click 事件会比 nextick 早执行，此时 dom 元素已经消失，就会报 undefined 的错
+        expect(cb).to.have.been.called
+      }, 300)
     })
     it('关于 enableHtml 参数', () => {
       const Constructor = Vue.extend(Toast)
