@@ -39,7 +39,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .xr-tabs-pane {
-    &.active {
-    }
+    padding: 1em;
 }
 </style>
