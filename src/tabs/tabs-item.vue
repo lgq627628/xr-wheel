@@ -1,6 +1,6 @@
 <template>
     <div class="xr-tabs-item" :class="tabClass" @click="change">
-        <slot></slot>{{active}}
+        <slot></slot>
     </div>
 </template>
 <script>
@@ -25,7 +25,8 @@ export default {
     computed: {
         tabClass() {
             return {
-                active: this.active
+                active: this.active,
+                disabled: this.disabled
             }
         }
     },
@@ -36,6 +37,7 @@ export default {
     },
     methods: {
         change() {
+            if (this.disabled) return
             this.eventBus.$emit('update:selected', this.name)
         }
     }
@@ -43,6 +45,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 $color-blue: blue;
+$color-disabled: #ccc;
 .xr-tabs-item {
     display: flex;
     align-items: center;
@@ -53,6 +56,10 @@ $color-blue: blue;
     &.active {
         color: $color-blue;
         font-weight: bold;
+    }
+    &.disabled {
+        color: $color-disabled;
+        cursor: not-allowed;
     }
 }
 </style>
