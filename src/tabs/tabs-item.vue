@@ -1,5 +1,5 @@
 <template>
-    <div class="xr-tabs-item" :class="tabClass" @click="change">
+    <div class="xr-tabs-item" :data-name="name" :class="tabClass" @click="change">
         <slot></slot>
     </div>
 </template>
@@ -31,14 +31,15 @@ export default {
         }
     },
     created() {
-        this.eventBus.$on('update:selected', name => {
+        this.eventBus && this.eventBus.$on('update:selected', name => {
             this.active = name === this.name
         })
     },
     methods: {
         change() {
             if (this.disabled) return
-            this.eventBus.$emit('update:selected', this.name)
+            this.eventBus && this.eventBus.$emit('update:selected', this.name)
+            this.$emit('click', this) // 给测试用的
         }
     }
 }

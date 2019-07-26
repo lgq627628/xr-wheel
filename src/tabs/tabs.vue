@@ -33,6 +33,9 @@ export default {
         }
     },
     mounted(){
+        if (this.$children.length <= 0) {
+            throw new Error('xr-tabs 标签里面不能为空')
+        }
         this.eventBus.$emit('update:selected', this.selected)
     }
 }
