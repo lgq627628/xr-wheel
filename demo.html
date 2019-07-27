@@ -39,6 +39,32 @@
 </head>
 <body>
 	<div id="app">
+		<xr-popover>
+			<div>自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1</div>
+			<xr-button slot="reference">hover激活1</xr-button>
+		</xr-popover>
+		<xr-popover direction="bottom">
+			<div>自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2</div>
+			<xr-button slot="reference">hover激活2</xr-button>
+		</xr-popover>
+		<xr-popover direction="right">
+			<div>自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3</div>
+			<xr-button slot="reference">hover激活3</xr-button>
+		</xr-popover>
+
+
+		<xr-popover trigger="click">
+			<div>自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1</div>
+			<xr-button slot="reference">hover激活1</xr-button>
+		</xr-popover>
+		<xr-popover direction="bottom" trigger="click">
+			<div>自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2自定义内容2</div>
+			<xr-button slot="reference">hover激活2</xr-button>
+		</xr-popover>
+		<xr-popover direction="right" trigger="click">
+			<div>自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3自定义内容3</div>
+			<xr-button slot="reference">hover激活3</xr-button>
+		</xr-popover>
 		<xr-tabs :selected.sync="activateTab">
 			<xr-tabs-head>
 				<xr-tabs-item name="one" disabled>标签一</xr-tabs-item>
