@@ -20,9 +20,9 @@
 				--border-color: #999;
 				--border-color-hover: #666;
 			}
-			/* #app {
+			#app {
 				margin: 50px;
-			} */
+			}
 			.line {
 				height: 1px;
 				background: #000;
@@ -39,21 +39,14 @@
 </head>
 <body>
 	<div id="app">
-		<xr-tabs :selected.sync="activateTab">
-			<xr-tabs-head>
-				<xr-tabs-item name="one" disabled>标签一</xr-tabs-item>
-				<xr-tabs-item name="two">标签二</xr-tabs-item>
-				<xr-tabs-item name="three"><xr-icon name="setting"></xr-icon>标签三</xr-tabs-item>
-				<template slot="action">
-					<xr-button>按钮</xr-button>
-				</template>
-			</xr-tabs-head>
-			<xr-tabs-body>
-				<xr-tabs-pane name="one">1111111111</xr-tabs-pane>
-				<xr-tabs-pane name="two">22222222222</xr-tabs-pane>
-				<xr-tabs-pane name="three">33333333333</xr-tabs-pane>
-			</xr-tabs-body>
-		</xr-tabs>
+		<xr-popover>
+			<div>自定义内容</div>
+			<xr-button slot="reference">hover激活</xr-button>
+		</xr-popover>
+		<xr-popover>
+			<div>自定义内容</div>
+			<xr-button slot="reference">hover激活</xr-button>
+		</xr-popover>
 	</div>
 	<script src="./src/app.js"></script>
 </body>
