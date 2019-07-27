@@ -1,9 +1,11 @@
 <template>
-    <div class="xr-popover" @click.stop="toggleVisible">
-        <div class="xr-popover__content" v-if="visible" @click.stop>
+    <div class="xr-popover" @click="onClick">
+        <div class="xr-popover__content" ref="content" v-if="visible">
             <slot></slot>
         </div>
-        <slot name="reference"></slot>
+        <span ref="reference">
+            <slot name="reference"></slot>
+        </span>
     </div>
 </template>
 <script>
@@ -15,17 +17,30 @@ export default {
         }
     },
     methods: {
-        toggleVisible() {
+        onClick() {
             this.visible = !this.visible
-            if (this.visible) {
-                setTimeout(() => { // 这是异步的
-                    let f = () => {
-                        this.visible = false
-                        document.removeEventListener('click', f)
-                    }
-                    document.addEventListener('click', f) // 不要加在 body 上，因为页面可能没那么高
-                })
+            if (this.visible) this.onShow()
+        },
+        onShow() {
+            setTimeout(() => { // 这是异步的
+                this.positionContent()
+                this.addDocumentListener()
+            })
+        },
+        positionContent() {
+            let content = this.$refs.content
+            document.body.appendChild(content) // 把元素移动到 body 下面，移动元素位置不会改变任何功能
+            let {width, height, top, left} = this.$refs.reference.getBoundingClientRect()
+            content.style.top = `${top + window.scrollY}px`
+            content.style.left = `${left + window.scrollX}px`
+        },
+        addDocumentListener() {
+            let f = (e) => {
+                if (this.$refs.content && this.$refs.content.contains(e.target)) return
+                this.visible = false
+                document.removeEventListener('click', f)
             }
+            document.addEventListener('click', f) // 不要加在 body 上，因为页面可能没那么高
         }
     }
 }
@@ -33,13 +48,11 @@ export default {
 <style lang="scss" scoped>
 .xr-popover {
    display: inline-block;
-   position: relative;
    &__content {
        position: absolute;
-       left: 0;
-       bottom: 100%;
        border: 1px solid red;
-       box-shadow: 0 0 3px rgba(0, 0, 0, .5)
+       box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+       transform: translateY(-100%);
    }
 }
 </style>
