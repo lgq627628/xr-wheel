@@ -39,6 +39,16 @@
 </head>
 <body>
 	<div id="app">
+		<xr-collapse :selected.sync="selectedCollapse" accordion>
+			<xr-collapse-item title="111111" name="1">内容一</xr-collapse-item>
+			<xr-collapse-item title="222222" name="2">内容二</xr-collapse-item>
+			<xr-collapse-item title="333333" name="3">内容三</xr-collapse-item>
+		</xr-collapse>
+		<xr-collapse accordion>
+			<xr-collapse-item title="111111">内容一</xr-collapse-item>
+			<xr-collapse-item title="222222">内容二</xr-collapse-item>
+			<xr-collapse-item title="333333">内容三</xr-collapse-item>
+		</xr-collapse>
 		<xr-popover>
 			<div>自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1自定义内容1</div>
 			<xr-button slot="reference">hover激活1</xr-button>

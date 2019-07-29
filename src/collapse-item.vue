@@ -9,8 +9,13 @@
 <script>
 export default {
     name: 'XrCollapseItem',
+    inject: ['eventBus', 'accordion'],
     props: {
         title: {
+            type: String,
+            required: true
+        },
+        name: {
             type: String,
             required: true
         }
@@ -20,9 +25,19 @@ export default {
             isOpen: false
         }
     },
+    mounted() {
+        this.eventBus.$on('updateAllStatus', (name) => {
+            if (name === this.name) {
+                this.isOpen = true
+            } else {
+                if (this.accordion) this.isOpen = false
+            }
+        })
+    },
     methods: {
         toggle() {
             this.isOpen = !this.isOpen
+            if (this.isOpen && this.accordion) this.eventBus.$emit('updateAllStatus', this.name)
         }
     }
 }
