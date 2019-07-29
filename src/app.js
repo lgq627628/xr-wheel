@@ -50,7 +50,8 @@ new Vue({
     data: {
         showBtn: false,
         msg: '哈哈哈',
-        activateTab: 'two'
+        activateTab: 'two',
+        selectedCollapse: '2'
     },
     methods: {
         changeInput(e) {
