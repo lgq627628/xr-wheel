@@ -32,21 +32,13 @@ export default {
             visible: false
         }
     },
-    computed: {
-        openEvent() {
-            return this.trigger === 'click' ? 'click' : 'mouseenter'
-        },
-        closeEvent() {
-            return this.trigger === 'click' ? 'click' : 'mouseleave'            
-        }
-    },
     mounted() {
         let popover = this.$refs.popover
         if (this.trigger === 'click') {
             popover.addEventListener('click', this.onClick)
         } else {
-            popover.addEventListener('mouseenter', this.onClick)
-            popover.addEventListener('mouseleave', this.onClick)
+            popover.addEventListener('mouseenter', this.open)
+            popover.addEventListener('mouseleave', this.close)
         }
         
     },
@@ -92,8 +84,10 @@ export default {
             content.style.left = posMap[this.direction].left + 'px'
         },
         onClickDocument(e) {
+            let popover = this.$refs.popover
             let content = this.$refs.content
             let target = e.target
+            if (popover && (popover === target || popover.contains(target))) return // 做这个判断是为了防止关闭两次
             if (content && (content === target || content.contains(target))) return // 做这个判断是为了防止关闭两次
             this.close()
         },
@@ -110,8 +104,8 @@ export default {
         if (this.trigger === 'click') {
             popover.removeEventListener('click', this.onClick)
         } else {
-            popover.removeEventListener('mouseenter', this.onClick) // this.open 也可以
-            popover.removeEventListener('mouseleave', this.onClick) // this.close 也可以
+            popover.removeEventListener('mouseenter', this.open) // this.open 也可以
+            popover.removeEventListener('mouseleave', this.close) // this.close 也可以
         }
     }
 }
