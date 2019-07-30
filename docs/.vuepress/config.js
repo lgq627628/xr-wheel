@@ -1,4 +1,5 @@
 module.exports = {
+    base: '/xr-wheel/',
     title: 'xr-wheel 官网',
     description: '一个基于 Vue 的 UI 组件',
     themeConfig: {
@@ -9,7 +10,14 @@ module.exports = {
                 title: '组件',
                 children: [
                     '/components/button',
-                    '/components/button-group'
+                    '/components/button-group',
+                    '/components/collapse',
+                    '/components/input',
+                    '/components/layout',
+                    '/components/popover',
+                    '/components/row',
+                    '/components/tabs',
+                    '/components/toast',
                 ]
             }
         ]

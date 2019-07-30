@@ -5,9 +5,7 @@
 			<xr-button >中间</xr-button>
 			<xr-button icon="right" icon-pos="right">下一页</xr-button>
 		</xr-button-group>
-        <pre>
-            <code>{{content}}</code>
-        </pre>
+        <pre><code>{{content}}</code></pre>
     </div>
 </template>
 
@@ -27,7 +25,7 @@ export default {
                     <xr-button >中间</xr-button>
                     <xr-button icon="right" icon-pos="right">下一页</xr-button>
                 </xr-button-group>
-            `
+            `.replace(/\t+| +/g, '').trim()
         }
     }
 }

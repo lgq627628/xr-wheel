@@ -3,9 +3,7 @@
 		<xr-button>点我呀</xr-button>
 		<xr-button icon="setting" icon-pos="right">点我呀</xr-button>
 		<xr-button icon="loading">点我呀</xr-button>
-        <pre>
-            <code>{{content}}</code>
-        </pre>
+        <pre><code>{{content}}</code></pre>
     </div>
 </template>
 
@@ -21,7 +19,7 @@ export default {
                 <xr-button>点我呀</xr-button>
                 <xr-button icon="setting" icon-pos="right">点我呀</xr-button>
                 <xr-button icon="loading">点我呀</xr-button>
-            `
+            `.replace(/\t+| +/g, '').trim()
         }
     }
 }
