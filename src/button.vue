@@ -35,6 +35,13 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+$button-height: 32px;
+$font-size: 14px;
+$button-bg: #fff;
+$button-bg-active: #eee;
+$border-radius: 4px;
+$border-color: #999;
+$border-color-hover: #666;
 .xr-button {
     display: inline-flex;
     align-items: center;
@@ -42,16 +49,16 @@ export default {
     // 所有行内样式都会有这个问题 
     vertical-align: middle;
     padding: 0 1em;
-    height: var(--button-height);
-    font-size: var(--font-size);
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    background: var(--button-bg);
+    height: $button-height;
+    font-size: $font-size;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    background: $button-bg;
     &:hover {
-        border: 1px solid var(--border-color-hover);
+        border: 1px solid $border-color-hover;
     }
     &:active {
-        background: var(--button-bg-active);
+        background: $button-bg-active;
     }
     &:focus {
         outline: none;
