@@ -35,13 +35,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-$button-height: 32px;
-$font-size: 14px;
-$button-bg: #fff;
-$button-bg-active: #eee;
-$border-radius: 4px;
-$border-color: #999;
-$border-color-hover: #666;
+@import "./var.scss";
 .xr-button {
     display: inline-flex;
     align-items: center;
@@ -49,7 +43,7 @@ $border-color-hover: #666;
     // 所有行内样式都会有这个问题 
     vertical-align: middle;
     padding: 0 1em;
-    height: $button-height;
+    height: $default-height;
     font-size: $font-size;
     border-radius: $border-radius;
     border: 1px solid $border-color;
