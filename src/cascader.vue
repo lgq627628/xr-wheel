@@ -33,13 +33,19 @@ export default {
 <style lang="scss" scoped>
 @import './var.scss';
 .xr-cascader {
+    position: relative;
     &__trigger {
         width: 200px;
         height: 32px;
-        border: 1px solid blue;
+        border: 1px solid $border-color-grey;
+        border-radius: $border-radius;
     }
     &__popover {
-        border: 1px solid blue;
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        background: #ffffff;
+        @extend .box-shadow
     }
 }
 </style>

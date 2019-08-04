@@ -31,7 +31,8 @@
   "homepage": "https://github.com/lgq627628/xr-wheel#readme",
   "dependencies": {
     "vue": "^2.6.10",
-    "vue-hot-reload-api": "^2.3.3"
+    "vue-hot-reload-api": "^2.3.3",
+    "webpack": "^4.39.1"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.0.0",

@@ -1,7 +1,10 @@
 <template>
     <div class="xr-cascader-option">
         <div class="xr-cascader-option__left">
-            <div class="xr-cascader-option__label" v-for="(item, index) in options " :key="index" @click="leftSelected = item">{{item.label}}</div>
+            <div class="xr-cascader-option__label" v-for="(item, index) in options " :key="index" @click="leftSelected = item">
+                {{item.label}}
+                <xr-icon class="xr-cascader-option__arrow" v-if="item.children && item.children.length" name="right"></xr-icon>
+            </div>
         </div>
         <div class="xr-cascader-option__right" v-if="rightOptions.length">
             <xr-cascader-option :options="rightOptions"></xr-cascader-option>
@@ -36,16 +39,29 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import './var.scss'; 
 .xr-cascader-option {
     display: flex;
-    border: 1px solid #000;
     &__left, &__right {
         min-width: 150px;
         height: 200px;
         overflow: scroll;
     }
+    &__left {
+        padding: .3em 0;
+    }
     &__right {
-        margin-top: -1px;
+        border-left: 1px solid $border-color-light;
+    }
+    &__label {
+        display: flex;
+        align-items: center;
+        padding: .3em 1em;
+        cursor: pointer;
+    }
+    &__arrow {
+        margin-left: auto ;
+        transform: scale(0.8);
     }
 }
 </style>
