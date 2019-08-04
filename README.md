@@ -35,6 +35,7 @@
     ```
     
 ## 文档
+https://lgq627628.github.io/xr-wheel/components/button.html
 
 ## 提问
 执行 npx parcel 时 node 会默认去执行 index.js 文件而我们需要的是找到 index.html

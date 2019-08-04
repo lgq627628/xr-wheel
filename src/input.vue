@@ -45,20 +45,14 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-$height: 32px;
-$border-color: #999;
-$border-color-hover: #666;
-$border-radius: 4px;
-$font-size: 14px;
-$box-shadow-color: rgba(0,0,0,0.5);
-$red: #f1453d;
+@import "./var.scss";
 .xr-input {
     display: inline-flex;
     align-items: center;
     font-size: $font-size;
     > input {
         padding: 0 8px;
-        height: $height;
+        height: $default-height;
         border: 1px solid $border-color;
         border-radius: $border-radius;
         font-size: inherit;
