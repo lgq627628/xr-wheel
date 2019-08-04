@@ -1,9 +1,9 @@
 <template>
     <div class="xr-cascader">
-        <div class="xr-cascader__trigger">
+        <div class="xr-cascader__trigger" @click="popoverVisible = !popoverVisible">
             <slot></slot>
         </div>
-        <div class="xr-cascader__options">
+        <div class="xr-cascader__popover" v-if="popoverVisible">
             <xr-cascader-option :options="options"></xr-cascader-option>
         </div>
     </div>
@@ -21,12 +21,25 @@ export default {
             type: Array,
             default: () => []
         }
+    },
+    data() {
+        return {
+            popoverVisible: false
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
 @import './var.scss';
-.xr-cascader { 
+.xr-cascader {
+    &__trigger {
+        width: 200px;
+        height: 32px;
+        border: 1px solid blue;
+    }
+    &__popover {
+        border: 1px solid blue;
+    }
 }
 </style>
