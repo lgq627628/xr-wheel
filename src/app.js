@@ -56,6 +56,7 @@ new Vue({
         msg: '哈哈哈',
         activateTab: 'two',
         selectedCollapse: '2',
+        selectedCascader: ['zujian', 'basic', 'color'],
         options: [{
             value: 'zhinan',
             label: '指南',
@@ -87,7 +88,7 @@ new Vue({
               }]
             }]
           }, {
-            value: 'zujian',
+            value: 'zujian', 
             label: '组件',
             children: [{
               value: 'basic',

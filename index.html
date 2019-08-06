@@ -40,7 +40,7 @@
 <body>
 	<div id="app">
 		<p>111111</p>
-		<xr-cascader :options="options"></xr-cascader>
+		<xr-cascader :options="options" :selected="selectedCascader" @update:selected="selectedCascader = $event"></xr-cascader>
 		<p>222222</p>		
 	</div>
 	<script src="./src/app.js"></script>
