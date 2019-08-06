@@ -1,21 +1,15 @@
 <template>
     <div class="xr-cascader-option">
         <div class="xr-cascader-option__left">
-            <div class="xr-cascader-option__label" v-for="(item, index) in options " :key="index" @click="leftSelected = item">
+            <div class="xr-cascader-option__label" v-for="(item, index) in options " :key="index" @click="handleClick(item)">
                 {{item.label}}
                 <xr-icon class="xr-cascader-option__arrow" v-if="item.children && item.children.length" name="right"></xr-icon>
             </div>
         </div>
         <div class="xr-cascader-option__right" v-if="rightOptions.length">
-            <xr-cascader-option :options="rightOptions"></xr-cascader-option>
+            <xr-cascader-option :options="rightOptions" :selected="selected" :level="level+1" @update:selected="updateSelected"></xr-cascader-option>
         </div>
     </div>
-    <!-- <ul class="xr-cascader-option" v-if="options.length">
-        <li v-for="(item,index) in options " :key="index">
-            <p>{{item.label}}</p>
-            <xr-cascader-option :options="item.children"></xr-cascader-option>
-        </li>
-    </ul> -->
 </template>
 <script>
 export default {
@@ -24,16 +18,32 @@ export default {
         options: {
             type: Array,
             default: () => []
-        }
-    },
-    data() {
-        return {
-            leftSelected: null
+        },
+        selected: {
+            type: Array,
+            default: () => []
+        },
+        level: {
+            type: Number,
+            default: 0
         }
     },
     computed: {
         rightOptions() {
-            return this.leftSelected && this.leftSelected.children || []
+            return this.selected[this.level] && this.selected[this.level].children || []
+        }
+    },
+    methods: {
+        handleClick(item) {
+            // 下面这种做法使得子组件改变了父组件的值，是不好的习惯，要抛弃掉。
+            // this.$set(this.selected, this.level, item);
+            // 通常正确的做法是深拷贝数据往外传
+            let copy = JSON.parse(JSON.stringify(this.selected))
+            copy[this.level] = item
+            this.$emit('update:selected', copy)
+        },
+        updateSelected(newSelected) {
+            this.$emit('update:selected', newSelected)
         }
     }
 }

@@ -4,7 +4,7 @@
             <slot></slot>
         </div>
         <div class="xr-cascader__popover" v-if="popoverVisible">
-            <xr-cascader-option :options="options"></xr-cascader-option>
+            <xr-cascader-option :options="options" :selected="selected" @update:selected="updateSelected"></xr-cascader-option>
         </div>
     </div>
 </template>
@@ -20,11 +20,20 @@ export default {
         options: {
             type: Array,
             default: () => []
+        },
+        selected: {
+            type: Array,
+            default: () => []
         }
     },
     data() {
         return {
             popoverVisible: false
+        }
+    },
+    methods: {
+        updateSelected(newSelected) {
+            this.$emit('update:selected', newSelected)
         }
     }
 }
