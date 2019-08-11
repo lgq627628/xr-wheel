@@ -30,7 +30,11 @@ export default {
     },
     computed: {
         rightOptions() {
-            return this.selected[this.level] && this.selected[this.level].children || []
+            // return this.selected[this.level] && this.selected[this.level].children || []
+            // 如果更新整个数据，这个值应该也要跟着变，所以他应该依赖于 options，就像下面这样
+            if (!this.selected[this.level]) return []
+            let option = this.options.find(item => item.value === this.selected[this.level].value)
+            return option && option.children || []
         }
     },
     methods: {
@@ -69,6 +73,10 @@ export default {
         align-items: center;
         padding: .3em 1em;
         cursor: pointer;
+        user-select: none;
+        &:hover {
+            background: $background-grey;
+        }
     }
     &__arrow {
         margin-left: auto ;
