@@ -24,6 +24,9 @@ export default {
         selected: {
             type: Array,
             default: () => []
+        },
+        loadData: {
+            type: Function
         }
     },
     data() {
@@ -40,6 +43,17 @@ export default {
         updateSelected(newSelected) {
             this.$emit('update:selected', newSelected)
             this.$emit('change', newSelected.map(item => item.value))
+            if (!this.loadData) return
+            let lastItem = newSelected[newSelected.length - 1]
+            let findItemFromSource = () => {}
+            let updateSource = result => {
+                let copy = JSON.parse(JSON.stringify(this.options))
+                let toUpdate = findItemFromSource(copy, newSelected.value)
+                toUpdate.children = result
+                this.$emit('update:options', copy)
+                // lastItem.children = result 这是单项数据流，用的是深拷贝，所以这样写是不好的，还是得操作 source
+            }
+            this.loadData(lastItem, updateSource)
         }
     }
 }

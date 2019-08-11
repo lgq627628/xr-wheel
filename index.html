@@ -40,9 +40,10 @@
 <body>
 	<div id="app">
 		<p>111111</p>
-		<xr-cascader :options="options" :selected.sync="selectedCascader" @change="changeCascader"></xr-cascader>
-		<!-- <xr-cascader :options="options" :selected="selectedCascader" @update:selected="selectedCascader = $event" @change="changeCascader"></xr-cascader> -->
-		<p>222222</p>		
+		<xr-cascader :options.sync="options" :selected.sync="selectedCascader" @change="changeCascader"></xr-cascader>
+		<!-- <xr-cascader :options.sync="options" :load-data="loadData" :selected.sync="selectedCascader" @change="changeCascader"></xr-cascader> -->
+		<!-- <xr-cascader :options="options" :selected="selectedCascader" @update:selected="selectedCascader = $event"  @change="changeCascader"></xr-cascader> -->
+		<p>222222</p>
 	</div>
 	<script src="./src/app.js"></script>
 </body>

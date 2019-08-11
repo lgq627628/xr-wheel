@@ -254,7 +254,14 @@ new Vue({
         }]
     },
     methods: {
-      changeCascader(e) {
+        loadData(node, cb) {
+          console.log(node.id)
+          setTimeout(() => { // 这里调用接口，并把数据传回去
+            let res = []
+            cb(res)
+          })
+        },
+        changeCascader(e) {
           console.log(e)
         },
         changeInput(e) {
