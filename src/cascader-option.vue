@@ -40,6 +40,7 @@ export default {
             // 通常正确的做法是深拷贝数据往外传
             let copy = JSON.parse(JSON.stringify(this.selected))
             copy[this.level] = item
+            copy.splice(this.level + 1) // 清空后面的选项
             this.$emit('update:selected', copy)
         },
         updateSelected(newSelected) {

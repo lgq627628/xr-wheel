@@ -254,6 +254,9 @@ new Vue({
         }]
     },
     methods: {
+      changeCascader(e) {
+          console.log(e)
+        },
         changeInput(e) {
             console.log('input的值变啦', e);
             this.msg = e;
