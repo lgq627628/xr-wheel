@@ -1,7 +1,7 @@
 <template>
     <div class="xr-cascader">
         <div class="xr-cascader__trigger" @click="popoverVisible = !popoverVisible">
-            <slot></slot>
+            {{nowCascader}}
         </div>
         <div class="xr-cascader__popover" v-if="popoverVisible">
             <xr-cascader-option :options="options" :selected="selected" @update:selected="updateSelected"></xr-cascader-option>
@@ -31,9 +31,15 @@ export default {
             popoverVisible: false
         }
     },
+    computed: {
+        nowCascader() {
+            return this.selected.map(item => item.label).join('/')
+        }
+    },
     methods: {
         updateSelected(newSelected) {
             this.$emit('update:selected', newSelected)
+            this.$emit('change', newSelected.map(item => item.value))
         }
     }
 }
@@ -44,10 +50,13 @@ export default {
 .xr-cascader {
     position: relative;
     &__trigger {
+        padding: 0 1em;
         width: 200px;
-        height: 32px;
+        height: $default-height;
+        line-height: $default-height;
         border: 1px solid $border-color-grey;
         border-radius: $border-radius;
+        @extend .ellipsis
     }
     &__popover {
         position: absolute;

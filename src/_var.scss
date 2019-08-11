@@ -12,3 +12,8 @@ $border-color-grey: rgba(0,0,0,0.2);
 .box-shadow {
     box-shadow:  0 0 5px rgba(0,0,0,0.2);
 }
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
