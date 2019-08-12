@@ -1,6 +1,6 @@
 <template>
-    <div class="xr-cascader">
-        <div class="xr-cascader__trigger" @click="popoverVisible = !popoverVisible">
+    <div class="xr-cascader" ref="cascader">
+        <div class="xr-cascader__trigger" @click="toggle">
             {{nowCascader}}
         </div>
         <div class="xr-cascader__popover" v-if="popoverVisible">
@@ -40,6 +40,29 @@ export default {
         }
     },
     methods: {
+        open() {
+            console.log('打开')
+            this.popoverVisible = true
+            document.addEventListener('click', this.onClickDocument)
+        },
+        close() {
+            console.log('关闭')
+            this.popoverVisible = false
+            document.removeEventListener('click', this.onClickDocument)
+        },
+        toggle() {
+            if (this.popoverVisible) {
+                this.close()
+            } else {
+                this.open()
+            }
+        },
+        onClickDocument(e) {
+            let cascader = this.$refs.cascader
+            let target = e.target
+            if (cascader.contains(target) || cascader === target) return
+            this.close()
+        },
         updateSelected(newSelected) {
             this.$emit('update:selected', newSelected)
             this.$emit('change', newSelected.map(item => item.value))
@@ -62,6 +85,7 @@ export default {
 <style lang="scss" scoped>
 @import './var.scss';
 .xr-cascader {
+    display: inline-flex;
     position: relative;
     &__trigger {
         padding: 0 1em;
