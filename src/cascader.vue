@@ -1,5 +1,5 @@
 <template>
-    <div class="xr-cascader" ref="cascader">
+    <div class="xr-cascader" ref="cascader" v-click-outside="close">
         <div class="xr-cascader__trigger" @click="toggle">
             {{nowCascader}}
         </div>
@@ -11,8 +11,10 @@
 
 <script>
 import XrCascaderOption from './cascader-option';
+import ClickOutside from './click-outside';
 export default {
     name: 'XrCascader',
+    directives: {ClickOutside},
     components: {
         XrCascaderOption
     },
@@ -40,28 +42,11 @@ export default {
         }
     },
     methods: {
-        open() {
-            console.log('打开')
-            this.popoverVisible = true
-            document.addEventListener('click', this.onClickDocument)
-        },
         close() {
-            console.log('关闭')
             this.popoverVisible = false
-            document.removeEventListener('click', this.onClickDocument)
         },
         toggle() {
-            if (this.popoverVisible) {
-                this.close()
-            } else {
-                this.open()
-            }
-        },
-        onClickDocument(e) {
-            let cascader = this.$refs.cascader
-            let target = e.target
-            if (cascader.contains(target) || cascader === target) return
-            this.close()
+            this.popoverVisible = !this.popoverVisible
         },
         updateSelected(newSelected) {
             this.$emit('update:selected', newSelected)
