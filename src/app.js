@@ -54,6 +54,7 @@ chai.use(spies);
 new Vue({
     el: '#app',
     data: {
+        curPage: 10,
         showBtn: false,
         msg: '哈哈哈',
         activateTab: 'two',
