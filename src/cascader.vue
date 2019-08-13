@@ -79,6 +79,7 @@ export default {
         line-height: $default-height;
         border: 1px solid $border-color-grey;
         border-radius: $border-radius;
+        background: #fff;
         @extend .ellipsis
     }
     &__popover {
