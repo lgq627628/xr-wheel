@@ -39,7 +39,7 @@
 </head>
 <body>
 	<div id="app">
-		<xr-page total-page="10" cur-page="5" @update:cur-page="curPage = $event" @change="gotoPage" hide-on-single-page></xr-page>
+		<xr-page :total-page="10" :cur-page.sync="curPage" @change="gotoPage" hide-on-single-page></xr-page>
 	</div>
 	<script src="./src/app.js"></script>
 </body>
