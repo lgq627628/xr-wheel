@@ -20,6 +20,7 @@ import Collapse from './collapse';
 import CollapseItem from './collapse-item';
 import Cascader from './cascader';
 import CascaderOption from './cascader-option';
+import Page from './page';
 import Col from './col';
 import Row from './row';
 import plugins from './plugin';
@@ -43,6 +44,7 @@ Vue.component('xr-collapse', Collapse);
 Vue.component('xr-collapse-item', CollapseItem);
 Vue.component('xr-cascader', Cascader);
 Vue.component('xr-cascader-option', CascaderOption);
+Vue.component('xr-page', Page);
 Vue.component('xr-col', Col);
 Vue.component('xr-row', Row);
 Vue.use(plugins);
@@ -254,6 +256,9 @@ new Vue({
         }]
     },
     methods: {
+        gotoPage(e) {
+          console.log(`跳到第${e}页`)
+        },
         loadData(node, cb) {
           console.log(node.id)
           setTimeout(() => { // 这里调用接口，并把数据传回去
