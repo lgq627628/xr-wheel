@@ -39,6 +39,7 @@
 </head>
 <body>
 	<div id="app">
+		<xr-page :total-page="10" :cur-page.sync="curPage" @change="gotoPage" hide-on-single-page></xr-page>
 		<p>111111</p>
 		<xr-cascader :options.sync="options" :selected.sync="selectedCascader" @change="changeCascader"></xr-cascader>
 		<p>222222</p>

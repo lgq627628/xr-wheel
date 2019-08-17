@@ -21,6 +21,8 @@ import CollapseItem from './collapse-item';
 import Cascader from './cascader';
 import CascaderOption from './cascader-option';
 import Page from './page';
+import Slider from './slider';
+import SliderItem from './slider-item';
 import Col from './col';
 import Row from './row';
 import plugins from './plugin';
@@ -45,6 +47,8 @@ Vue.component('xr-collapse-item', CollapseItem);
 Vue.component('xr-cascader', Cascader);
 Vue.component('xr-cascader-option', CascaderOption);
 Vue.component('xr-page', Page);
+Vue.component('xr-slider', Slider);
+Vue.component('xr-slider-item', SliderItem);
 Vue.component('xr-col', Col);
 Vue.component('xr-row', Row);
 Vue.use(plugins);
@@ -54,6 +58,7 @@ chai.use(spies);
 new Vue({
     el: '#app',
     data: {
+        selectedSilder: '',
         curPage: 10,
         showBtn: false,
         msg: '哈哈哈',
@@ -255,6 +260,9 @@ new Vue({
               label: '组件交互文档'
             }]
         }]
+    },
+    mounted() {
+      
     },
     methods: {
         gotoPage(e) {
