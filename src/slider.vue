@@ -1,10 +1,19 @@
 <template>
-    <div class="xr-slider" @mouseenter="onMouseenter" @mouseleave="onMouseleave">
+    <div class="xr-slider"
+        @mouseenter="onMouseenter"
+        @mouseleave="onMouseleave"
+        @touchstart="onTouchstart"
+        @touchmove="onTouchmove"
+        @touchend="onTouchend">
         <div class="xr-slider__inner">
             <slot></slot>
         </div>
         <div class="xr-slider__dots">
             <span v-for="(item, idx) in names" :key="idx" :class="(selected || names[0]) === item ? 'active' : ''" @click="select(item)"></span>
+        </div>
+        <div class="xr-slider__arrow">
+            <span @click="move(true)">&lt;</span>
+            <span @click="move(false)">&gt;</span>
         </div>
     </div>
 </template>
@@ -29,7 +38,8 @@ export default {
         return {
             names: [],
             lastSelected: '',
-            timeId: ''
+            timeId: '',
+            startPoint: ''
         }
     },
     mounted() {
@@ -58,6 +68,31 @@ export default {
         onMouseleave() {
             this.play()
         },
+        onTouchstart(e) {
+            this.pause()
+            this.startPoint = e.touches[0] // 因为有多点触控
+        },
+        onTouchmove(e) {
+        },
+        onTouchend(e) {
+            let {clientX: x1, clientY: y1} = this.startPoint
+            let {clientX: x2, clientY: y2} = e.changedTouches[0]
+            let deltaX = x2-x1
+            let deltaY = y2-y1
+            let k = deltaY / deltaX
+            if (-1 < k && k < 1) { // 此处要判断滑动趋势，说明用户是在滑
+                this.move(deltaX > 0)
+            }
+            this.play()
+        },
+        move(isLeft) {
+            let newIdx = this.names.indexOf(this.selected || this.$children[0].name)
+            let len = this.names.length
+            isLeft ? newIdx-- : newIdx++
+            if (newIdx > len - 1) newIdx = 0
+            if (newIdx < 0) newIdx = len - 1
+            this.select(this.names[newIdx])
+        },
         pause() {
             window.clearTimeout(this.timeId)
             this.timeId = ''
@@ -74,10 +109,12 @@ export default {
             let newIdx = this.names.indexOf(selected)
             let oldIdx = this.names.indexOf(this.lastSelected || this.$children[0].name)
             this.$children.forEach(vm => {
-                if (this.direction === 'right') {
+                vm.reverse = newIdx < oldIdx ? true : false
+                if (newIdx === 0 && oldIdx === this.names.length - 1) {
                     vm.reverse = false
-                } else {
-                    vm.reverse = newIdx < oldIdx || (newIdx === this.names.length - 1 && oldIdx === 0) ? true : false
+                }
+                if (newIdx === this.names.length - 1 && oldIdx === 0) {
+                    vm.reverse = true
                 }
                 this.$nextTick(() => {
                     vm.selected = selected
@@ -121,6 +158,25 @@ export default {
                 background: #000;
                 cursor: auto;
             }
+        }
+    }
+    &__arrow {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        justify-content: space-between;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 1px solid red;
+        span {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            border-radius: 50%;
+            background: #ddd;
+            text-align: center;
         }
     }
 }
