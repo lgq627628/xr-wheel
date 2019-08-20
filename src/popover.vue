@@ -99,7 +99,7 @@ export default {
             // 如果浮层触顶就自动放下面，获取 content 高度 和 reference 高度，然后相减判断
         }
     },
-    destroyed() {
+    beforeDestroyed() { // 销毁之后就不能用 this 获取了
         let popover = this.$refs.popover
         if (this.trigger === 'click') {
             popover.removeEventListener('click', this.onClick)

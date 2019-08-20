@@ -2,7 +2,7 @@ import Vue from 'vue'
 import chai from 'chai'
 import sinon from 'sinon'
 import sinonChai from "sinon-chai" // 可以不引入'mocha' 和 'sinon-chai'，因为 karma 自动引进了
-import Input from '../src/input'
+import Input from '../../src/input'
 const expect = chai.expect;
 chai.use(sinonChai)
 

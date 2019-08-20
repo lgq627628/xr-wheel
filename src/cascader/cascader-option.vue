@@ -54,7 +54,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import './var.scss'; 
+@import '../var.scss'; 
 .xr-cascader-option {
     display: flex;
     &__left, &__right {

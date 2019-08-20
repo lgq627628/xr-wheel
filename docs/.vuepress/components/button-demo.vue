@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import XrButton from '../../../src/button';
+import XrButton from '../../../src/button/button';
 export default {
     components: {
         XrButton
