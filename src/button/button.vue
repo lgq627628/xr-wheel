@@ -9,7 +9,7 @@
     </button>
 </template>
 <script>
-import XrIcon from './icon';
+import XrIcon from '../icon';
 export default {
     name: 'XrButton',
     components: {
@@ -35,7 +35,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "./var.scss";
+@import "../var.scss";
 .xr-button {
     display: inline-flex;
     align-items: center;

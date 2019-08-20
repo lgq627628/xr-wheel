@@ -1,12 +1,12 @@
-import Vue from '../node_modules/vue/dist/vue.common.js';
+import Vue from 'vue/dist/vue.common';
 import chai from 'chai'
 import sinon from 'sinon'
 import sinonChai from "sinon-chai"
-import Tabs from '../src/tabs/tabs'
-import TabsHead from '../src/tabs/tabs-head';
-import TabsBody from '../src/tabs/tabs-body';
-import TabsItem from '../src/tabs/tabs-item';
-import TabsPane from '../src/tabs/tabs-pane';
+import Tabs from '../../src/tabs/tabs'
+import TabsHead from '../../src/tabs/tabs-head';
+import TabsBody from '../../src/tabs/tabs-body';
+import TabsItem from '../../src/tabs/tabs-item';
+import TabsPane from '../../src/tabs/tabs-pane';
 const expect = chai.expect;
 chai.use(sinonChai)
 

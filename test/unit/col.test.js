@@ -1,9 +1,9 @@
-import Vue from '../node_modules/vue/dist/vue.common.js';
+import Vue from 'vue/dist/vue.common';
 import chai from 'chai'
 import sinon from 'sinon'
 import sinonChai from "sinon-chai" // 可以不引入'mocha' 和 'sinon-chai'，因为 karma 自动引进了
-import Row from '../src/row'
-import Col from '../src/col'
+import Row from '../../src/grid/row'
+import Col from '../../src/grid/col'
 const expect = chai.expect;
 chai.use(sinonChai)
 

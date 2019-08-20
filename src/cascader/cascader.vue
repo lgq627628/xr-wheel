@@ -11,7 +11,7 @@
 
 <script>
 import XrCascaderOption from './cascader-option';
-import ClickOutside from './click-outside';
+import ClickOutside from '../click-outside';
 export default {
     name: 'XrCascader',
     directives: {ClickOutside},
@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './var.scss';
+@import '../var.scss';
 .xr-cascader {
     display: inline-flex;
     position: relative;

@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "parcel index.html --no-cache",
-    "dev-test": "parcel watch test/* --no-cache & karma start",
-    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
+    "dev-test": "parcel watch test/unit/* --no-cache & karma start",
+    "test": "parcel build test/unit/* --no-cache --no-minify && karma start --single-run",
     "build": "parcel build index.js --no-cache --no-minify",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
