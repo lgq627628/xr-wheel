@@ -66,7 +66,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import './var.scss';
+@import './style/var.scss';
 .xr-page {
     display: flex;
     align-items: center;
