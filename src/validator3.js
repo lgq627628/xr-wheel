@@ -2,7 +2,7 @@ function validate(data, rules) {
     let errors = {};  // 有错误的话放这里面
     rules.forEach(rule => {
         let val = data[rule.key]
-        if (rule.required) {
+        if (rule.required) { // required 比较特殊，单独处理比较合适
             let error = validate.required(val)
             if (error) {
                 setDefaultObj(errors, rule.key)
@@ -10,29 +10,21 @@ function validate(data, rules) {
                 return
             }
         }
-        if (rule.pattern) {
-            let error = validate.pattern(val, rule.pattern)
-            if (error) {
-                setDefaultObj(errors, rule.key)
-                errors[rule.key].pattern = error
+        let restKeys = Object.keys(rule).filter(key => key !== 'key' && key !== 'required');
+        restKeys.forEach(restKey => {
+            if (validate[restKey]) { // 这里要注意规则可能不存在，这时候需要给用户一个警告或者报错
+                let error = validate[restKey](val, rule[restKey])
+                if (error) {
+                    setDefaultObj(errors, rule.key)
+                    errors[rule.key][restKey] = error
+                }
+            } else {
+                throw `${restKey}规则不存在`
             }
-        }
-        if (rule.minLen) {
-            let error = validate.minLen(val, rule.minLen)
-            if (error) {
-                setDefaultObj(errors, rule.key)
-                errors[rule.key].minLen = error
-            }
-        }
-        if (rule.maxLen) {
-            let error = validate.maxLen(val, rule.maxLen)
-            if (error) {
-                setDefaultObj(errors, rule.key)
-                errors[rule.key].maxLen = error
-            }
-        }
-        console.log(errors)
+        })
     });
+    console.log(errors)
+    return errors
 }
 validate.required = (val) => {
     if (!val && val !== 0) {
@@ -71,7 +63,7 @@ let rules = [{
     key: 'name',
     required: true,
     minLen: 6,
-    maxlen: 10
+    maxLen: 10
 }, {
     key: 'phone',
     pattern: 'phone'
