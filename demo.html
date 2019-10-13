@@ -39,6 +39,25 @@
 </head>
 <body>
 	<div id="app">
+		<xr-nav>
+			<xr-nav-item>首页</xr-nav-item>
+			<xr-nav-item>关于</xr-nav-item>
+			<xr-nav-item>招聘</xr-nav-item>
+		</xr-nav>
+
+		<xr-slider :selected.sync="selectedSilder">
+			<!-- 以 vue 的方式来实现，而不是原生 dom -->
+			<xr-slider-item name="1">
+				<div style="display: flex; align-items: center; justify-content: center; color: #fff; height: 100px; background: red;">1</div>
+			</xr-slider-item>
+			<xr-slider-item name="2">
+				<div style="display: flex; align-items: center; justify-content: center; color: #fff; height: 100px; background: green;">2</div>
+			</xr-slider-item>
+			<xr-slider-item name="3">
+				<div style="display: flex; align-items: center; justify-content: center; color: #fff; height: 100px; background: blue;">3</div>
+			</xr-slider-item>
+		</xr-slider>
+
 		<xr-page :total-page="10" :cur-page.sync="curPage" @change="gotoPage" hide-on-single-page></xr-page>
 		<p>111111</p>
 		<xr-cascader :options.sync="options" :selected.sync="selectedCascader" @change="changeCascader"></xr-cascader>
