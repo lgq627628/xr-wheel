@@ -25,6 +25,9 @@ import Slider from './slider/slider';
 import SliderItem from './slider/slider-item';
 import Col from './grid/col';
 import Row from './grid/row';
+import Nav from './Nav/nav';
+import NavItem from './Nav/nav-item';
+import SubNav from './Nav/sub-nav';
 import plugins from './plugin';
 
 Vue.component('xr-button', Button);
@@ -51,6 +54,10 @@ Vue.component('xr-slider', Slider);
 Vue.component('xr-slider-item', SliderItem);
 Vue.component('xr-col', Col);
 Vue.component('xr-row', Row);
+Vue.component('xr-nav', Nav);
+Vue.component('xr-nav-item', NavItem);
+Vue.component('xr-sub-nav', SubNav);
+
 Vue.use(plugins);
 
 chai.use(spies);
