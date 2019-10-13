@@ -39,7 +39,8 @@
 </head>
 <body>
 	<div id="app">
-		<xr-table :columns="columns" :data-source="dataSource" bordered @change-item="changeItem"></xr-table>
+		<xr-table :columns="columns" :data-source="dataSource" bordered :selected-items.sync="selectedItems"></xr-table>
+		{{selectedItems}}
 	</div>
 	<script src="./src/app.js"></script>
 </body>

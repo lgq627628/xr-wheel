@@ -9,7 +9,7 @@
             ]">
             <thead>
                 <tr>
-                    <th><input type="checkbox"></th>
+                    <th><input ref="allChecked" type="checkbox" @change="changeAllItem"></th>
                     <th v-if="numVisible">#</th>
                     <th v-for="(col, index) in columns" :key="index">{{col.title}}</th>
                 </tr>
@@ -17,7 +17,7 @@
 
             <tbody>
                 <tr v-for="(row, i) in dataSource" :key="i">
-                    <td><input type="checkbox" @change="changeItem(row, i, $event)"></td>
+                    <td><input type="checkbox" @change="changeItem(row, i, $event)" :checked="formateStatus(row)"></td>
                     <td v-if="numVisible">{{i+1}}</td>
                     <template v-for="(col, j) in columns">
                         <td :key="`${i}-${j}`">{{row[col.key]}}</td>
@@ -33,12 +33,12 @@ export default {
     name: 'XrTable',
     props: {
         columns: {
-            type:Array,
+            type: Array,
             default: () => [],
             required: true
         },
         dataSource: {
-            type:Array,
+            type: Array,
             default: () => [],
             required: true
         },
@@ -58,11 +58,38 @@ export default {
         size: {
             type: String,
             default: ''
+        },
+        selectedItems: {
+            type: Array,
+            default: () => [],
         }
     },
     methods: {
+        formateStatus(row) {
+            return this.selectedItems.findIndex(item => item.id === row.id) >= 0
+        },
         changeItem(row, i, e) {
-            this.$emit('change-item', {selected: e.target.checked, row, index: i})
+            let selected = e.target.checked
+            let copy = JSON.parse(JSON.stringify(this.selectedItems))
+            if (selected) {
+                copy.push(row)
+            } else {
+                let idx = copy.findIndex(item => item.id === row.id)
+                copy.splice(idx, 1)
+            }
+            this.$emit('update:selected-items', copy)
+            this.$refs['allChecked'].indeterminate = false
+            if (copy.length <= 0) {
+                this.$refs['allChecked'].checked = false
+            } else if (copy.length >= this.dataSource.length) {
+                this.$refs['allChecked'].checked = true
+            } else {
+                this.$refs['allChecked'].indeterminate = true
+            }
+        },
+        changeAllItem(e) {
+            let selected = e.target.checked
+            this.$emit('update:selected-items', selected ? this.dataSource : [])
         }
     }
 }
