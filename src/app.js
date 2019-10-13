@@ -67,6 +67,7 @@ chai.use(spies);
 new Vue({
     el: '#app',
     data: {
+        selectedItems: [],
         columns: [
           {key: 'name', title: '姓名'},
           {key: 'sex', title: '性别'},
