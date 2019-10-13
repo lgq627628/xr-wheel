@@ -26,8 +26,9 @@ import SliderItem from './slider/slider-item';
 import Col from './grid/col';
 import Row from './grid/row';
 import Nav from './Nav/nav';
-import NavItem from './Nav/nav-item';
-import SubNav from './Nav/sub-nav';
+import NavItem from './nav/nav-item';
+import SubNav from './nav/sub-nav';
+import XrTable from './table/table';
 import plugins from './plugin';
 
 Vue.component('xr-button', Button);
@@ -57,6 +58,7 @@ Vue.component('xr-row', Row);
 Vue.component('xr-nav', Nav);
 Vue.component('xr-nav-item', NavItem);
 Vue.component('xr-sub-nav', SubNav);
+Vue.component('xr-table', XrTable);
 
 Vue.use(plugins);
 
@@ -65,6 +67,20 @@ chai.use(spies);
 new Vue({
     el: '#app',
     data: {
+        columns: [
+          {key: 'name', title: '姓名'},
+          {key: 'sex', title: '性别'},
+          {key: 'score', title: '分数'}
+        ],
+        dataSource: [
+          {id: 1, name: '张三', sex: '男', score: 100},
+          {id: 2, name: '李四', sex: '女 ', score: 60},
+          {id: 3, name: '王五', sex: '男', score: 90},
+          {id: 4, name: '李四法', sex: '女 ', score: 80},
+          {id: 5, name: '王五收', sex: '男', score: 88},
+          {id: 6, name: '李个四', sex: '女 ', score: 50},
+          {id: 7, name: '王好五', sex: '男', score: 40},
+        ],
         selectedSilder: '',
         curPage: 10,
         showBtn: false,
@@ -272,6 +288,9 @@ new Vue({
       
     },
     methods: {
+      changeItem (obj) {
+        console.log(obj)
+      },
         gotoPage(e) {
           console.log(`跳到第${e}页`)
         },
