@@ -39,7 +39,7 @@
 </head>
 <body>
 	<div id="app">
-		<xr-table :columns="columns" :data-source="dataSource" bordered :selected-items.sync="selectedItems"></xr-table>
+		<xr-table :columns="columns" :data-source="dataSource" bordered :selected-items.sync="selectedItems" @sort="sort" :loading="loadingTable"></xr-table>
 		{{selectedItems}}
 	</div>
 	<script src="./src/app.js"></script>

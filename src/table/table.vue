@@ -9,9 +9,9 @@
             ]">
             <thead>
                 <tr>
-                    <th><input ref="allChecked" type="checkbox" @change="changeAllItem"></th>
+                    <th><input ref="allChecked" type="checkbox" @change="changeAllItem" :checked="isAllSelected"></th>
                     <th v-if="numVisible">#</th>
-                    <th v-for="(col, index) in columns" :key="index">{{col.title}}</th>
+                    <th v-for="(col, index) in columns" :key="index">{{col.title}}<span class="xr-table__sort" v-if="col.sort" @click="toggleSort(col)">↑↓<span></th>
                 </tr>
             </thead>
 
@@ -25,6 +25,9 @@
                 </tr>
             </tbody>
         </table>
+        <div class="xr-table--loading" v-if="loading">
+            <xr-icon name="loading"></xr-icon>
+        </div>
     </div>
 </template>
 
@@ -62,6 +65,32 @@ export default {
         selectedItems: {
             type: Array,
             default: () => [],
+        },
+        loading: {
+            type: Boolean,
+            default: false
+        }
+    },
+    computed: {
+        isAllSelected() {
+            // 由于是单向数据流，所以不能单纯判断长度是否相等来判断全选
+            let all = this.dataSource.map(item => item.id).sort()
+            let selected = this.selectedItems.map(item => item.id).sort()
+            let isEqual = true
+            if (all.length === selected.length) {
+                for(let i = 0, len = all.length; i<len; i++) {
+                    if (all[i] !== selected[i]) {
+                        isEqual = false
+                        break;
+                    }
+                }
+            } else {
+                isEqual = false
+            }
+            this.$nextTick(() => {
+                this.$refs['allChecked'].indeterminate = selected.length && !isEqual
+            })
+            return isEqual
         }
     },
     methods: {
@@ -78,18 +107,13 @@ export default {
                 copy.splice(idx, 1)
             }
             this.$emit('update:selected-items', copy)
-            this.$refs['allChecked'].indeterminate = false
-            if (copy.length <= 0) {
-                this.$refs['allChecked'].checked = false
-            } else if (copy.length >= this.dataSource.length) {
-                this.$refs['allChecked'].checked = true
-            } else {
-                this.$refs['allChecked'].indeterminate = true
-            }
         },
         changeAllItem(e) {
             let selected = e.target.checked
             this.$emit('update:selected-items', selected ? this.dataSource : [])
+        },
+        toggleSort(col) {
+            this.$emit('sort')
         }
     }
 }
@@ -130,6 +154,24 @@ export default {
                 background: $background-grey;
             }
         }
+    }
+    &__sort {
+        cursor: pointer;
+    }
+    &-wrapper {
+        position: relative;
+    }
+    &--loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 30px;
+        background: rgba(255, 255, 255, 0.8);
     }
 } 
 </style>

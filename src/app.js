@@ -67,11 +67,12 @@ chai.use(spies);
 new Vue({
     el: '#app',
     data: {
+        loadingTable: false,
         selectedItems: [],
         columns: [
           {key: 'name', title: '姓名'},
           {key: 'sex', title: '性别'},
-          {key: 'score', title: '分数'}
+          {key: 'score', title: '分数', sort: true}
         ],
         dataSource: [
           {id: 1, name: '张三', sex: '男', score: 100},
@@ -289,6 +290,14 @@ new Vue({
       
     },
     methods: {
+      sort() {
+        this.loadingTable = true;
+        setTimeout(() => {
+          this.loadingTable = false;
+        }, 1000);
+        console.log('排序啦')
+        // 调用后端接口，再给this.dataSource赋值
+      },
       changeItem (obj) {
         console.log(obj)
       },
