@@ -75,13 +75,21 @@ new Vue({
           {key: 'score', title: '分数', sort: true}
         ],
         dataSource: [
-          {id: 1, name: '张三', sex: '男', score: 100},
-          {id: 2, name: '李四', sex: '女 ', score: 60},
-          {id: 3, name: '王五', sex: '男', score: 90},
-          {id: 4, name: '李四法', sex: '女 ', score: 80},
-          {id: 5, name: '王五收', sex: '男', score: 88},
-          {id: 6, name: '李个四', sex: '女 ', score: 50},
-          {id: 7, name: '王好五', sex: '男', score: 40},
+          {id: 1, name: '张三', sex: '男', score: 100, desc: '我是详情啊一堆描述'},
+          {id: 2, name: '李四', sex: '女 ', score: 60, desc: '我是详情啊一堆描述'},
+          {id: 3, name: '王五', sex: '男', score: 90, desc: '我是详情啊一堆描述'},
+          {id: 4, name: '李四法', sex: '女 ', score: 80, desc: '我是详情啊一堆描述'},
+          {id: 5, name: '王五收', sex: '男', score: 88, desc: '我是详情啊一堆描述'},
+          {id: 6, name: '李个四', sex: '女 ', score: 50, desc: '我是详情啊一堆描述'},
+          {id: 7, name: '王好五', sex: '男', score: 40, desc: '我是详情啊一堆描述'},
+          {id: 8, name: '王好五', sex: '男', score: 40, desc: '我是详情啊一堆描述'},
+          {id: 9, name: '王好五', sex: '男', score: 40, desc: '我是详情啊一堆描述'},
+          {id: 10, name: '王好五', sex: '男', score: 40, desc: '我是详情啊一堆描述'},
+          {id: 11, name: '王好五', sex: '男', score: 40, desc: '我是详情啊一堆描述'},
+          {id: 12, name: '王好五', sex: '男', score: 40, desc: '我是详情啊一堆描述'},
+          {id: 13, name: '王好五', sex: '男', score: 40, desc: '我是详情啊一堆描述'},
+          {id: 14, name: '王好五', sex: '男', score: 40, desc: '我是详情啊一堆描述'},
+          {id: 15, name: '王好五', sex: '男', score: 40, desc: '我是详情啊一堆描述'}
         ],
         selectedSilder: '',
         curPage: 10,
@@ -290,6 +298,12 @@ new Vue({
       
     },
     methods: {
+      editTable() {
+        alert('编辑表格数据')
+      },
+      lookTable() {
+        alert('查看表格数据')
+      },
       sort() {
         this.loadingTable = true;
         setTimeout(() => {
