@@ -39,7 +39,12 @@
 </head>
 <body>
 	<div id="app">
-		<xr-table :columns="columns" :data-source="dataSource" bordered :selected-items.sync="selectedItems" @sort="sort" :loading="loadingTable"></xr-table>
+		<xr-table :expand="true" :has-checkbox="true" :columns="columns" :data-source="dataSource" bordered :selected-items.sync="selectedItems" @sort="sort" :loading="loadingTable" height="300">
+			<template v-slot:op>
+				<xr-button @click="editTable">编辑</xr-button>
+				<xr-button @click="lookTable">查看</xr-button>
+			  </template>
+		</xr-table>
 		{{selectedItems}}
 	</div>
 	<script src="./src/app.js"></script>
