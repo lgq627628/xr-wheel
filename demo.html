@@ -39,6 +39,19 @@
 </head>
 <body>
 	<div id="app">
+		<!-- <xr-table
+			:columns="columns"
+			:data="data"
+			@on-selection-change="onSelectionChange"
+			@on-sort="onSort"
+			height="150"
+		  >
+			<template #age="{row, col, index}">{{ row.age + '岁'}}</template>
+			<template #action="{row, col, index}">
+			  <button>编辑{{index}}</button>
+			  <button>删除</button>
+			</template>
+		  </xr-table> -->
 		<xr-nav>
 			<xr-nav-item>首页</xr-nav-item>
 			<xr-nav-item>关于</xr-nav-item>
