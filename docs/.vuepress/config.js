@@ -11,6 +11,7 @@ module.exports = {
                 children: [
                     '/components/button',
                     '/components/button-group',
+                    '/components/tags-input',
                     '/components/collapse',
                     '/components/input',
                     '/components/layout',
